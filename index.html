@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .link {
+      width: 100%;
+      word-break: break-all;
+      font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+      color: #24292e;
+      border: 1px solid #dcdfe6;
+      border-radius: 4px;
+    }
+
+    .wrapper {
+      margin-bottom: 10px;
+    }
+
+    .button {
+      color: #fff;
+      background-color: #409eff;
+      border: 1px solid #409eff;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    pre,
+    code {
+      font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+      background-color: #f6f8fa;
+      border-radius: 3px;
+      color: #24292e;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea cols="30" rows="5" class="link" id="text"></textarea>
+  <div class="wrapper">
+    <button class="button" id="formjson">JSON格式化</button>
+  </div>
+  <div>
+    <pre><code id="view"></code></pre>
+  </div>
+
+  <script>
+    let formjson = document.getElementById('formjson')
+    let text = document.getElementById('text')
+    let view = document.getElementById('view')
+    formjson.onclick = function () {
+      handlerJSON(text.value)
+    }
+    function handlerJSON(value) {
+      try {
+        view.innerHTML = JSON.stringify(JSON.parse(value), null, 2).trim();
+      } catch (error) {
+        alert('您输入的信息有误，请重新输入')
+      }
+    }
+  </script>
+</body>
+
+</html>
